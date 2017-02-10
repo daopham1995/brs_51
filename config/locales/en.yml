@@ -72,6 +72,12 @@ en:
   comment:
     success_create: "New comment is added"
     content: "Please insert comment!"
+  status:
+    success: "Update status success!"
+    not_find: "Can't find status of this book"
+    read: "read"
+    reading: "reading"
+    warning: "Can't update status!"
   controller:
     invalid_email: "Invalid email/password combination"
   admin:

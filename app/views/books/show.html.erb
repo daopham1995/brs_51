@@ -25,6 +25,9 @@
           <%= @book.category.name %>
         </p>
         <p>
+          <%= render "status_form" %>
+        </p>
+        <p>
           <b><%= t "admin.book.description" %></b>
           <%= @book.description %>
         </p>

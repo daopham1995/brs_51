@@ -77,9 +77,8 @@ ActiveRecord::Schema.define(version: 20170220132805) do
     t.integer  "user_id"
     t.integer  "book_id"
     t.integer  "status"
-    t.boolean  "is_favorite", default: false, null: false
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["book_id", "user_id"], name: "index_reading_statuses_on_book_id_and_user_id", unique: true
     t.index ["book_id"], name: "index_reading_statuses_on_book_id"
     t.index ["user_id"], name: "index_reading_statuses_on_user_id"

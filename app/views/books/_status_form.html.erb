@@ -1,0 +1,9 @@
+<div>
+  <% if @support.check_reading_status(current_user).status.present? %>
+    <h4 class="status-book text-left">
+      <%= @support.check_reading_status(current_user).status %>
+    </h4>
+  <% end %>
+    <%= render "read_or_reading",
+      reading_status: @support.check_reading_status(current_user) %>
+</div>

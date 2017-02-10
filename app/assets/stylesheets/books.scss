@@ -1,6 +1,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+$color-red: red;
+
 .padding-right {
   padding-right: 0;
 }
@@ -82,7 +84,7 @@ h2.title {
 }
 
 .unlike-button {
-  color: red;
+  color: $color-red;
 }
 
 .like-activity-count {
@@ -92,4 +94,8 @@ h2.title {
 
 .glyphicon {
     font-size: 24px;
+}
+
+.status-book {
+  color: $color-red;
 }

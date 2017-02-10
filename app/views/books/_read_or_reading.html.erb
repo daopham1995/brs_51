@@ -1,0 +1,13 @@
+<%= form_for [@book, reading_status] do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :book_id, value: @book.id %>
+  <%= f.hidden_field :status, value: t("status.reading") %>
+  <%= f.submit t("status.reading"), class: "btn btn-warning" %>
+<% end %>
+
+<%= form_for [@book, reading_status] do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :book_id, value: @book.id %>
+  <%= f.hidden_field :status, value: t("status.read") %>
+  <%= f.submit t("status.read"), class: "btn btn-warning" %>
+<% end %>
