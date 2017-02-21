@@ -1,0 +1,78 @@
+<div class="row">
+  <div class="book-details">
+    <div class="col-sm-10 text-center col-sm-offset-1">
+      <div class="book-information">
+        <h3><%= @category.name %></h3>
+        <p>
+          <b><%= t "admin.book.description" %></b>
+          <%= @category.description %>
+        </p>
+        <p>
+          <span>
+            <%= link_to t("admin.book.edit_button"),
+              edit_admin_category_url(@category), class: "btn btn-info" %>
+            <%= link_to t("admin.book.delete_button"),
+              admin_category_url(@category),
+              method: :delete, data: {confirm: t("admin.book.delete_confirm")},
+              class: "btn btn-danger" %>
+          </span> 
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="book-details">
+    <div class="col-sm-10 col-sm-offset-1">
+      <div class="book-information">
+        <button class="new-book-category btn btn-info" >
+          <%= t "admin.category.new_book" %>
+        </button>
+        <%= form_for [:admin, @category, @book],
+          html: {class: "form_book-category" ,multipart: true} do |f| %>
+          <%= render "shared/error_messages", object: @book %>
+
+          <%= f.label :category %>
+          <%= f.select :category_id ,
+            options_for_select(@categories.collect{|c| [c.name, c.id]}) %>    
+
+          <%= f.label :title %>
+          <%= f.text_field :title, class: "form-control" %>
+
+          <%= f.label :author_name %>
+          <%= f.text_field :author_name, class: "form-control" %>
+
+          <%= f.label :pages %>
+          <%= f.number_field :pages, class: "form-control" %>
+
+          <%= f.label :publish_date %>
+          <%= f.date_field :publish_date, class: "form-control" %>
+
+          <%= f.label :cover %>
+          <%= f.file_field :cover, accept: "image/jpeg,image/gif,image/png" %>
+
+          <%= f.label :description %>
+          <%= f.text_area :description, class: "form-control" %>
+
+          <%= f.submit t("review.submit"), class: "btn btn-primary" %>
+        <% end %>
+        <table class="table table-hover">
+          <% @category.books.each do |book| %>
+            <tr>
+              <td><%= book.id %></td>
+              <td>
+                <%= link_to image_tag(book.cover.url), admin_book_path(book),
+                  class: "img-responsive" if book.cover? %>
+              </td>
+              <td><%= book.title %></td>
+              <td><%= book.author_name %></td>
+              <td><%= book.pages %></td>
+              <td><%= book.publish_date %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+

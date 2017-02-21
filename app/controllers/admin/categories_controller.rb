@@ -1,10 +1,9 @@
 class Admin::CategoriesController < ApplicationController
-  
   before_action :verify_admin
   before_action :find_category, except: [:index, :new, :create]
+  before_action :load_category, only: [:index, :show]
 
   def index
-    @categories = Category.all
   end
   
   def new
@@ -19,6 +18,10 @@ class Admin::CategoriesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @book = @category.books.build
   end
 
   def edit
@@ -53,5 +56,9 @@ class Admin::CategoriesController < ApplicationController
       flash[:warning] = t "flash.error_find_catagory"
       redirect_to admin_categories_path	
     end
+  end
+
+  def load_category
+    @categories = Category.all
   end
 end

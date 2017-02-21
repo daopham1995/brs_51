@@ -33,7 +33,9 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :categories, except: :show
+    resources :categories do
+      resources :books, only: [:create]
+    end
     resources :books
     resources :requests, only: [:index, :destroy]
   end

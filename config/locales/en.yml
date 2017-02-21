@@ -1,5 +1,8 @@
 en:
   hello: "Hello world"
+  app:
+    category: "Categories"
+    requests: "Requests"
   layouts:
     base_title: "Book Reviewing System"
     company: "Framgia Vietnam Co., Ltd"
